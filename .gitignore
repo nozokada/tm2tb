@@ -3,3 +3,4 @@ sbert_models/
 tm2tb-env/
 training_data/
 *data_generator*
+venv/
