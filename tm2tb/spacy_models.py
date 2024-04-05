@@ -13,6 +13,7 @@ import de_core_news_md
 import fr_core_news_md
 import pt_core_news_md
 import it_core_news_md
+import ja_core_news_md
 
 # Disable unneeded pipeline components
 disabled_comps = ['lemmatizer', 'ner', 'entity_linker', 'trf_data', 'textcat']
@@ -23,7 +24,8 @@ spacy_models = {
     'de': de_core_news_md.load(disable=disabled_comps),
     'fr': fr_core_news_md.load(disable=disabled_comps),
     'pt': pt_core_news_md.load(disable=disabled_comps),
-    'it': it_core_news_md.load(disable=disabled_comps)
+    'it': it_core_news_md.load(disable=disabled_comps),
+    'ja': ja_core_news_md.load(disable=disabled_comps)
     }
 
 print('Loading spacy models...')
@@ -36,7 +38,7 @@ def get_spacy_model(lang):
     Parameters
     ----------
     lang : string
-        Two-character language identifier ('en', 'es', 'de', 'fr', 'pt' or 'it')
+        Two-character language identifier ('en', 'es', 'de', 'fr', 'pt', 'it', or 'ja')
 
     Raises
     ------
@@ -53,8 +55,7 @@ def get_spacy_model(lang):
                     spacy.lang.pt.Portuguese
                     spacy.lang.it.Italian
     """
-
-    supported_languages = ['en', 'es', 'de', 'fr', 'pt', 'it']
+    supported_languages = ['en', 'es', 'de', 'fr', 'pt', 'it', 'ja']
     if lang not in supported_languages:
         raise ValueError(f"{lang} model has not been installed!")
     spacy_model = spacy_models[lang]
